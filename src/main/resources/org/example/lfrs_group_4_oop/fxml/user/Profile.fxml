@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="650.0" prefWidth="850.0" spacing="20.0" stylesheets="@../../styles/styles.css" styleClass="root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.lfrs_group_4_oop.controller.UserController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <!-- Header / Navigation Bar -->
+    <HBox alignment="CENTER_LEFT" styleClass="nav-bar" spacing="15.0">
+        <VBox.margin>
+            <Insets top="-20.0" left="-20.0" right="-20.0" />
+        </VBox.margin>
+        <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: -fx-brand-red; -fx-background-radius: 4px; -fx-padding: 2 5;">
+            <ImageView fitHeight="30.0" preserveRatio="true">
+                <Image url="@../../images/Polytechnic_University_of_the_Philippines.svg.png" />
+            </ImageView>
+        </HBox>
+        <Button fx:id="navDashboard" onAction="#onDashboardClick" text="Dashboard" styleClass="nav-link" />
+        <Button fx:id="navMyReports" onAction="#onMyReportsClick" text="My Reports" styleClass="nav-link" />
+        <Button fx:id="navReport" onAction="#onReportClick" text="Report" styleClass="nav-link" />
+        
+        <Region HBox.hgrow="ALWAYS" />
+
+        <HBox alignment="CENTER_RIGHT" spacing="15.0">
+            <StackPane fx:id="navAvatarContainer" onMouseClicked="#onProfileClick" styleClass="nav-avatar-container">
+                <ImageView fx:id="headerAvatar" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                    <clip>
+                        <Circle radius="17.5" centerX="17.5" centerY="17.5" />
+                    </clip>
+                </ImageView>
+            </StackPane>
+        </HBox>
+    </HBox>
+
+    <!-- Main Content Container with Cover Banner -->
+    <VBox styleClass="profile-card" spacing="20.0" VBox.vgrow="ALWAYS">
+        <VBox.margin>
+            <Insets top="10.0" />
+        </VBox.margin>
+        
+        <!-- Clean Profile Header Layout (Completely Bannerless) -->
+        <HBox alignment="CENTER_LEFT" spacing="25.0" style="-fx-padding: 0 0 10 10;">
+            <StackPane onMouseClicked="#onAvatarClick" styleClass="avatar-hero-container" style="-fx-border-color: #E2E8F0; -fx-border-width: 2px; -fx-border-radius: 64px; -fx-background-radius: 64px;">
+                <!-- Inner StackPane clips both avatar image & edit overlay badge to a perfect circle -->
+                <StackPane prefHeight="120.0" prefWidth="120.0" maxHeight="120.0" maxWidth="120.0">
+                    <clip>
+                        <Circle radius="60.0" centerX="60.0" centerY="60.0" />
+                    </clip>
+                    
+                    <ImageView fx:id="avatarImageView" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
+                    
+                    <!-- Subtle Dark Overlay for Photo Editing Instructions -->
+                    <VBox fx:id="avatarEditBadge" alignment="BOTTOM_CENTER" mouseTransparent="true" styleClass="avatar-badge-edit" prefHeight="120.0" prefWidth="120.0" maxHeight="120.0" maxWidth="120.0">
+                        <Label text="Click to edit" styleClass="avatar-badge-text" style="-fx-padding: 0 0 5 0;" />
+                    </VBox>
+                </StackPane>
+            </StackPane>
+            
+            <VBox spacing="8.0" alignment="CENTER_LEFT">
+                <Label fx:id="roleLabel" style="-fx-background-color: #E3F2FD; -fx-text-fill: #1976D2; -fx-padding: 4 12; -fx-background-radius: 12; -fx-font-weight: bold; -fx-font-size: 11px;" text="Standard User" />
+                <Label fx:id="userNameHeader" text="User Name" style="-fx-text-fill: -fx-color-text-primary; -fx-font-size: 28px; -fx-font-weight: bold;" />
+            </VBox>
+            
+            <Region HBox.hgrow="ALWAYS" />
+            <Button onAction="#onLogoutClick" text="Log Out" styleClass="btn-outline" style="-fx-padding: 8 16; -fx-font-size: 13px; -fx-text-fill: -fx-brand-red; -fx-border-color: -fx-brand-red;" />
+        </HBox>
+
+        <!-- Redesigned Modern Tab Control -->
+        <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+            <Tab text="Personal Information">
+                <VBox spacing="20.0" style="-fx-padding: 25 15 15 15;">
+                    <!-- Stacked Modern Form Fields Grid -->
+                    <GridPane hgap="20.0" vgap="18.0" maxWidth="600.0">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
+                        </columnConstraints>
+                        
+                        <!-- Name Field (Full Width Row) -->
+                        <VBox spacing="6.0" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2">
+                            <Label text="FULL NAME" styleClass="form-group-label" />
+                            <TextField fx:id="nameField" editable="false" styleClass="text-field" />
+                        </VBox>
+                        
+                        <!-- Student Number Field -->
+                        <VBox spacing="6.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                            <Label text="STUDENT NUMBER" styleClass="form-group-label" />
+                            <TextField fx:id="studentNoField" editable="false" styleClass="text-field" />
+                        </VBox>
+                        
+                        <!-- Program Field -->
+                        <VBox spacing="6.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <Label text="ACADEMIC PROGRAM" styleClass="form-group-label" />
+                            <TextField fx:id="programField" editable="false" styleClass="text-field" />
+                        </VBox>
+                        
+                        <!-- Section Field -->
+                        <VBox spacing="6.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                            <Label text="SECTION" styleClass="form-group-label" />
+                            <TextField fx:id="sectionField" editable="false" styleClass="text-field" />
+                        </VBox>
+                        
+                        <!-- Email Field -->
+                        <VBox spacing="6.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <Label text="EMAIL ADDRESS" styleClass="form-group-label" />
+                            <TextField fx:id="emailField" editable="false" styleClass="text-field" />
+                        </VBox>
+                  <rowConstraints>
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                  </rowConstraints>
+                    </GridPane>
+
+                    <!-- Profile Form Edit Actions Row -->
+                    <HBox spacing="15.0" style="-fx-padding: 10 0 0 0;">
+                        <Button fx:id="editProfileButton" onAction="#onEditClick" prefWidth="140.0" styleClass="btn-primary" text="Edit Profile" />
+                        <HBox fx:id="editActionsBox" spacing="15.0" visible="false" managed="false">
+                            <Button onAction="#onSaveClick" prefWidth="140.0" style="-fx-background-color: #388E3C; -fx-text-fill: white;" styleClass="button" text="Save Changes" />
+                            <Button onAction="#onCancelClick" prefWidth="110.0" styleClass="btn-secondary" text="Cancel" />
+                        </HBox>
+                    </HBox>
+                </VBox>
+            </Tab>
+            
+            <Tab text="Security Settings">
+                <VBox spacing="20.0" style="-fx-padding: 25 15 15 15;">
+                    <Label text="Change Password" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: -fx-color-text-primary;" />
+                    
+                    <VBox spacing="15.0" maxWidth="500.0" VBox.vgrow="NEVER">
+                        <!-- Current Password -->
+                        <VBox spacing="6.0">
+                            <Label text="CURRENT PASSWORD" styleClass="form-group-label" />
+                            <PasswordField fx:id="currentPasswordField" styleClass="password-field" />
+                        </VBox>
+                        
+                        <!-- New Password with Inline Strength -->
+                        <VBox spacing="6.0">
+                            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                <Label text="NEW PASSWORD" styleClass="form-group-label" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <!-- Strength Label (binds to listener in UserController) -->
+                                <Label fx:id="passwordStrengthLabel" visible="false" managed="false" styleClass="strength-label" />
+                            </HBox>
+                            <PasswordField fx:id="newPasswordField" styleClass="password-field" />
+                        </VBox>
+                        
+                        <!-- Confirm Password -->
+                        <VBox spacing="6.0">
+                            <Label text="CONFIRM NEW PASSWORD" styleClass="form-group-label" />
+                            <PasswordField fx:id="confirmPasswordField" styleClass="password-field" />
+                        </VBox>
+                        
+                        <!-- Action Button -->
+                        <Button onAction="#onUpdatePasswordClick" prefWidth="165.0" styleClass="btn-primary" text="Update Password" style="-fx-padding: 10 20; -fx-font-size: 14px;" />
+                    </VBox>
+                </VBox>
+            </Tab>
+        </TabPane>
+    </VBox>
+
+    <!-- Global Screen Status Messaging -->
+    <Label fx:id="statusLabel" wrapText="true" style="-fx-font-weight: bold; -fx-font-size: 13px;" />
+
+    <Region VBox.vgrow="ALWAYS" />
+
+    <!-- Footer -->
+    <HBox styleClass="footer" VBox.vgrow="NEVER" alignment="CENTER" spacing="10.0">
+        <VBox.margin>
+            <Insets bottom="-20.0" left="-20.0" right="-20.0" />
+        </VBox.margin>
+        <ImageView fitHeight="30.0" preserveRatio="true">
+            <Image url="@../../images/Polytechnic_University_of_the_Philippines.svg.png" />
+        </ImageView>
+        <Label text="© 2026 Group 4 OOP - All Rights Reserved." styleClass="footer-text"/>
+    </HBox>
+</VBox>

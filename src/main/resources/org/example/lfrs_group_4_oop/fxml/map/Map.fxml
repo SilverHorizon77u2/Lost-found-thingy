@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.control.Separator?>
+
+<VBox prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #F8FAFC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.lfrs_group_4_oop.controller.MapController">
+    <children>
+        <HBox alignment="CENTER_LEFT" prefHeight="65.0" style="-fx-background-color: #C22727;" spacing="20.0">
+            <padding>
+                <Insets left="20.0" right="20.0" />
+            </padding>
+            <children>
+                <StackPane prefWidth="40.0" prefHeight="40.0">
+                    <children>
+                        <ImageView fx:id="logoImageView" fitHeight="35.0" fitWidth="35.0" preserveRatio="true" />
+                    </children>
+                </StackPane>
+
+                <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Button fx:id="navDashboard" mnemonicParsing="false" onAction="#onDashboardClick" style="-fx-background-color: transparent; -fx-text-fill: #E2E8F0; -fx-font-size: 14px; -fx-font-weight: normal; -fx-cursor: hand;" text="Dashboard" />
+                        <Button fx:id="navMyReports" mnemonicParsing="false" onAction="#onMyReportsClick" style="-fx-background-color: transparent; -fx-text-fill: #E2E8F0; -fx-font-size: 14px; -fx-font-weight: normal; -fx-cursor: hand;" text="My Reports" />
+                        <Button fx:id="navReport" mnemonicParsing="false" onAction="#onReportClick" style="-fx-background-color: transparent; -fx-text-fill: #E2E8F0; -fx-font-size: 14px; -fx-font-weight: normal; -fx-cursor: hand;" text="Report" />
+                        <Button fx:id="navGallery" mnemonicParsing="false" onAction="#onGalleryClick" style="-fx-background-color: transparent; -fx-text-fill: #E2E8F0; -fx-font-size: 14px; -fx-font-weight: normal; -fx-cursor: hand;" text="Gallery" />
+                        <Button fx:id="navMap" mnemonicParsing="false" onAction="#onMapClick" style="-fx-background-color: transparent; -fx-text-fill: #E2E8F0; -fx-font-size: 14px; -fx-cursor: hand;" text="Campus Map" />
+
+                        <VBox alignment="CENTER" spacing="4.0">
+                            <children>
+                                <Button fx:id="navMap" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-size: 14px; -fx-font-weight: bold; -fx-cursor: hand;" text="Campus Map" />
+                                <HBox prefHeight="3.0" prefWidth="70.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2px;" />
+                            </children>
+                            <padding>
+                                <Insets top="6.0" />
+                            </padding>
+                        </VBox>
+                    </children>
+                </HBox>
+
+                <StackPane fx:id="navAvatarContainer" onMouseClicked="#onProfileClick" style="-fx-cursor: hand;">
+                    <children>
+                        <ImageView fx:id="headerAvatar" fitHeight="40.0" fitWidth="40.0" preserveRatio="true" />
+                    </children>
+                </StackPane>
+            </children>
+        </HBox>
+
+        <HBox spacing="30.0" VBox.vgrow="ALWAYS">
+            <padding>
+                <Insets top="25.0" right="40.0" bottom="25.0" left="40.0" />
+            </padding>
+            <children>
+
+                <VBox spacing="15.0" prefWidth="320.0" maxWidth="320.0" minWidth="320.0">
+                    <children>
+                        <VBox spacing="5.0">
+                            <children>
+                                <Label text="Interactive Campus Map" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #C22727;" />
+                                <Label text="Select a zone to view its reported lost items." style="-fx-font-size: 13px; -fx-text-fill: #64748B;" wrapText="true" />
+                            </children>
+                        </VBox>
+
+                        <VBox style="-fx-background-color: #FFFFFF; -fx-padding: 16px; -fx-background-radius: 8px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 8, 0, 0, 2);" spacing="12.0" VBox.vgrow="ALWAYS">
+                            <children>
+                                <Label text="Hovered Region Information" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1E293B;" />
+                                <Separator />
+                                <Label fx:id="zoneTitleLabel" text="No Region Selected" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #C22727;" />
+                                <Label fx:id="zoneDescLabel" text="Move your mouse cursor over the school layout layout map areas to inspect local zones." style="-fx-font-size: 12px; -fx-text-fill: #64748B;" wrapText="true" />
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+
+                <StackPane alignment="CENTER" HBox.hgrow="ALWAYS" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 8, 0, 0, 2);">
+                    <children>
+                        <Pane fx:id="mapContainerPane" maxWidth="-Infinity" maxHeight="-Infinity" prefWidth="600.0" prefHeight="600.0">
+                            <children>
+                                <ImageView fx:id="mapGraphicImageView" fitWidth="600.0" fitHeight="600.0" pickOnBounds="true" preserveRatio="true" />
+
+                                <Polygon fx:id="buildingZone" />
+                                <Polygon fx:id="nearCourtZone" />
+                                <Polygon fx:id="courtZone" />
+                                <Polygon fx:id="canteenZone" />
+                                <Polygon fx:id="parkingZone" />
+                                <Polygon fx:id="kubosZone" />
+                            </children>
+                        </Pane>
+                    </children>
+                </StackPane>
+
+            </children>
+        </HBox>
+    </children>
+</VBox>
