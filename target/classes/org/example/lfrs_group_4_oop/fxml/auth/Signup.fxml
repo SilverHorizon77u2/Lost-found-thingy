@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<HBox fx:id="rootNode" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.lfrs_group_4_oop.controller.SignupController" styleClass="auth-root"
+      prefWidth="1000" prefHeight="700" stylesheets="@../../styles/styles.css">
+    
+    <!-- Left Pane (Auth Form - 50%) -->
+    <VBox fx:id="leftPane" alignment="CENTER" HBox.hgrow="ALWAYS" prefWidth="500.0" maxWidth="Infinity" style="-fx-background-color: #FFFFFF; -fx-padding: 60;">
+        <VBox alignment="CENTER_LEFT" spacing="15.0" maxWidth="450">
+            <VBox spacing="5.0" alignment="CENTER_LEFT">
+                <Label text="Create an Account" styleClass="auth-header" />
+                <Label text="Sign up to start reporting and claiming items" styleClass="subtitle" />
+            </VBox>
+            
+            <HBox spacing="15.0">
+                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                    <Label text="Full Name" style="-fx-font-weight: bold; -fx-text-fill: -fx-color-text-primary;" />
+                    <TextField fx:id="nameField" promptText="John Doe" styleClass="text-field" />
+                    <Label fx:id="nameErrorLabel" styleClass="error-label" visible="false" managed="false" />
+                </VBox>
+                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                    <Label text="Student Number" style="-fx-font-weight: bold; -fx-text-fill: -fx-color-text-primary;" />
+                    <TextField fx:id="studentNoField" promptText="2023-00001" styleClass="text-field" />
+                    <Label fx:id="studentNoErrorLabel" styleClass="error-label" visible="false" managed="false" />
+                </VBox>
+            </HBox>
+
+            <VBox spacing="5.0">
+                <Label text="Email Address" style="-fx-font-weight: bold; -fx-text-fill: -fx-color-text-primary;" />
+                <TextField fx:id="emailField" promptText="john@example.com" styleClass="text-field" />
+                <Label fx:id="emailErrorLabel" styleClass="error-label" visible="false" managed="false" />
+            </VBox>
+
+            <VBox spacing="5.0">
+                <Label text="Password" style="-fx-font-weight: bold; -fx-text-fill: -fx-color-text-primary;" />
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <StackPane HBox.hgrow="ALWAYS">
+                        <PasswordField fx:id="passwordField" promptText="Create a secure password" styleClass="text-field" />
+                        <TextField fx:id="passwordVisibleField" promptText="Create a secure password" styleClass="text-field" visible="false" managed="false" />
+                    </StackPane>
+                    <Button fx:id="togglePasswordButton" text="Show" onAction="#onTogglePasswordVisibility" styleClass="button, btn-secondary" />
+                </HBox>
+                <Label fx:id="passwordErrorLabel" styleClass="error-label" visible="false" managed="false" />
+            </VBox>
+
+            <HBox spacing="15.0">
+                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                    <Label text="Program" style="-fx-font-weight: bold; -fx-text-fill: -fx-color-text-primary;" />
+                    <TextField fx:id="programField" promptText="BSIT" styleClass="text-field" />
+                </VBox>
+                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                    <Label text="Section" style="-fx-font-weight: bold; -fx-text-fill: -fx-color-text-primary;" />
+                    <TextField fx:id="sectionField" promptText="3A" styleClass="text-field" />
+                </VBox>
+            </HBox>
+
+            <Label fx:id="statusLabel" styleClass="error-label" visible="false" managed="false" />
+
+            <VBox spacing="10.0" alignment="CENTER" style="-fx-padding: 10 0 0 0;">
+                <Button fx:id="signupButton" text="Create Account" onAction="#onSignupButtonClick" styleClass="button, btn-primary" prefWidth="Infinity" />
+                <Button text="Already have an account? Log in" onAction="#onBackToLoginClick" styleClass="button, btn-link" />
+            </VBox>
+        </VBox>
+    </VBox>
+
+    <!-- Right Pane (Marketing/UX - 50%) -->
+    <VBox fx:id="rightPane" alignment="CENTER_LEFT" spacing="20.0" HBox.hgrow="ALWAYS" prefWidth="500.0" maxWidth="Infinity" style="-fx-background-color: linear-gradient(to bottom right, -fx-brand-red, -fx-brand-yellow); -fx-padding: 60;">
+        <ImageView fitHeight="100.0" preserveRatio="true">
+            <Image url="@../../images/Polytechnic_University_of_the_Philippines.svg.png" />
+        </ImageView>
+        <Label text="Find what you lost. Return what you found." styleClass="marketing-header" wrapText="true" textAlignment="LEFT" />
+        <Label text="Join the PUP community in making campus life better for everyone." styleClass="marketing-subtext" wrapText="true" textAlignment="LEFT" />
+    </VBox>
+
+</HBox>
